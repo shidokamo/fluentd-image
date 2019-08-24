@@ -1,6 +1,7 @@
-# fluentd image
+# fluentd sidecar image
 fluentd の Docker イメージです。GKEのポッド上でのサイドカーコンテナとしての
-使い方を想定していますが、Aggregator などとして単体でデプロイすることも可能だと思います。
+使い方を想定しているため最低限のプラグインしかインストールされていません。
+Aggregator などとして単体でデプロイすることも可能だと思いますがその際はプラグインを追加してください。
 
 ## リファレンスデザイン
 [Fluentd GCP Image](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/fluentd-gcp-image)
