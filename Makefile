@@ -24,15 +24,15 @@ TAG = 1.0.0
 BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 
 build:
-	docker build --pull -t $(PREFIX)/fluentd-gcp:$(TAG) .
+	docker build --pull -t $(PREFIX)/fluentd-sidecar:$(TAG) .
 
 push:
-	gcloud docker -- push $(PREFIX)/fluentd-gcp:$(TAG)
+	gcloud docker -- push $(PREFIX)/fluentd-sidecar:$(TAG)
 
 update-dependencies:build
-	docker run -it --name fluentd-gcp-refreeze $(PREFIX)/fluentd-gcp:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
-	docker cp fluentd-gcp-refreeze:/Gemfile.lock .
-	docker rm fluentd-gcp-refreeze
+	docker run -it --name fluentd-sidecar-refreeze $(PREFIX)/fluentd-sidecar:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
+	docker cp fluentd-sidecar-refreeze:/Gemfile.lock .
+	docker rm fluentd-sidecar-refreeze
 
 clean:
-	-docker rm fluentd-gcp-refreeze
+	-docker rm fluentd-sidecar-refreeze
