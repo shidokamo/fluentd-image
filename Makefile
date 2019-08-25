@@ -26,12 +26,14 @@ BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 build:
 	docker build --pull -t $(PREFIX)/fluentd-gcp:$(TAG) .
 
-
 push:
 	gcloud docker -- push $(PREFIX)/fluentd-gcp:$(TAG)
 
-
-update-dependencies: build
+# For the very first time, you need to run 'build' targt without modifying Gemfile before update dependencies.
+# Then update Gemfile and run update-dependencies target.
+# Next time, you don't need to do this because build was done at the end of previous run.
+update-dependencies:
 	docker run -it --name fluentd-gcp-refreeze $(PREFIX)/fluentd-gcp:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
 	docker cp fluentd-gcp-refreeze:/Gemfile.lock .
 	docker rm fluentd-gcp-refreeze
+	docker build --pull -t $(PREFIX)/fluentd-gcp:$(TAG) .
