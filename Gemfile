@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'fluentd', '>= 1.0.0'
 gem 'fluent-plugin-record-reformer'
-gem 'fluent-plugin-google-cloud'
+# gem 'fluent-plugin-google-cloud'
 gem 'fluent-plugin-detect-exceptions'
 gem 'fluent-plugin-multi-format-parser'
 gem 'oj', '~>2.18.1'
