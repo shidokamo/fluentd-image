@@ -8,8 +8,6 @@ GEM
       fluentd (>= 0.10)
     fluent-plugin-multi-format-parser (1.0.0)
       fluentd (>= 0.14.0, < 2)
-    fluent-plugin-record-reformer (0.9.1)
-      fluentd
     fluentd (1.7.0)
       cool.io (>= 1.4.5, < 2.0.0)
       dig_rb (~> 1.0.0)
@@ -23,7 +21,7 @@ GEM
       yajl-ruby (~> 1.0)
     http_parser.rb (0.6.0)
     msgpack (1.3.1)
-    oj (2.18.5)
+    oj (3.9.0)
     serverengine (2.1.1)
       sigdump (~> 0.2.2)
     sigdump (0.2.4)
@@ -40,6 +38,5 @@ PLATFORMS
 DEPENDENCIES
   fluent-plugin-detect-exceptions
   fluent-plugin-multi-format-parser
-  fluent-plugin-record-reformer
   fluentd (>= 1.0.0)
-  oj (~> 2.18.1)
+  oj
