@@ -17,8 +17,10 @@
 
 .PHONY:	build push
 
-PREFIX=staging-k8s.gcr.io
-TAG = 2.1.1
+REPO=gcr.io
+PROJECT:= $(shell gcloud config get-value project)
+PREFIX := ${REPO}/${PROJECT}
+TAG = 1.0.0
 BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 
 build:
