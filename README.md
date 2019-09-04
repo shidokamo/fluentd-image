@@ -1,12 +1,16 @@
-# fluentd sidecar image
-fluentd の Docker イメージです。GKEのポッド上でのサイドカーコンテナとしての
-使い方を想定しているため最低限のプラグインしかインストールされていません。
-Aggregator などとして単体でデプロイすることも可能だと思いますがその際はプラグインを追加してください。
+# fluentd image
+fluentd の Docker イメージです。以下のような用途を想定しています。
+
+* GKEのポッド上でのサイドカーコンテナ(Forwarder)としてのデプロイ
+* GKE上の Aggregator コンテナ
+
+必要最低限のプラグインしかインストールされていません。
 
 ## リファレンスデザイン
 [Fluentd GCP Image](https://github.com/GoogleCloudPlatform/k8s-stackdriver/tree/master/fluentd-gcp-image)
 
-## debian-base-amd64:v1.0.0
+## ベースイメージ
+ベースイメージである `debian-base-amd64` は、
 非常に軽量の debian イメージです。サイドカーとして多くの pod にデプロイする関係上これは重要です。
 sh などの最低限のツールは搭載されていますが、例えば、/bin/bash などを実行することはできません。
 `apt-get` は使用できますが、より便利な `clean-install` というコマンドが提供されています。

@@ -20,21 +20,22 @@
 REPO=gcr.io
 PROJECT:= $(shell gcloud config get-value project)
 PREFIX := ${REPO}/${PROJECT}
-TAG = v1.0.0
+IMAGE := fluentd
+TAG = v1.7.0
 BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 
 default:build push
 
 build:
-	docker build --pull -t $(PREFIX)/fluentd-sidecar:$(TAG) .
+	docker build --pull -t $(PREFIX)/${IMAGE}:$(TAG) .
 
 push:
-	gcloud docker -- push $(PREFIX)/fluentd-sidecar:$(TAG)
+	gcloud docker -- push $(PREFIX)/${IMAGE}:$(TAG)
 
 update-dependencies:build
-	docker run -it --name fluentd-sidecar-refreeze $(PREFIX)/fluentd-sidecar:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
-	docker cp fluentd-sidecar-refreeze:/Gemfile.lock .
-	docker rm fluentd-sidecar-refreeze
+	docker run -it --name ${IMAGE}-refreeze $(PREFIX)/${IMAGE}:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
+	docker cp ${IMAGE}-refreeze:/Gemfile.lock .
+	docker rm ${IMAGE}-refreeze
 
 clean:
-	-docker rm fluentd-sidecar-refreeze
+	-docker rm ${IMAGE}r-refreeze
