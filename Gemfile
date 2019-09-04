@@ -1,11 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'fluentd', '~>1.6'
-gem 'fluent-plugin-record-reformer', '~>0.9.0'
-# gem 'fluent-plugin-systemd', '=0.0.9'
-# gem 'systemd-journal', '=1.3.1'
-gem 'fluent-plugin-google-cloud', '~>0.7.0'
-gem 'fluent-plugin-detect-exceptions', '~>0.0.12'
-# gem 'fluent-plugin-prometheus', '~>0.2.1'
-gem 'fluent-plugin-multi-format-parser', '~>1.0.0'
-gem 'oj', '~>3.7.0'
+gem 'fluentd', '>= 1.0.0'
+gem 'fluent-plugin-detect-exceptions'
+gem 'fluent-plugin-multi-format-parser'
+gem 'oj'
+gem 'fluent-plugin-insert-id'
+
