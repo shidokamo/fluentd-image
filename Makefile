@@ -21,10 +21,10 @@ REPO=gcr.io
 PROJECT:= $(shell gcloud config get-value project)
 PREFIX := ${REPO}/${PROJECT}
 IMAGE := fluentd
-TAG = v1.7.0
+TAG = v1.7.0b
 BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 
-default:build push
+default:update-dependencies push
 
 build:
 	docker build --pull -t $(PREFIX)/${IMAGE}:$(TAG) .
