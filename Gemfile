@@ -7,4 +7,5 @@ gem 'fluent-plugin-insert-id'
 gem 'fluent-plugin-gcs'
 gem 'fluent-plugin-kafka'
 gem 'fluent-plugin-elasticsearch'
+gem 'fluent-plugin-forest'
 

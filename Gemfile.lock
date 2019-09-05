@@ -24,6 +24,8 @@ GEM
       elasticsearch
       excon
       fluentd (>= 0.14.22)
+    fluent-plugin-forest (0.3.3)
+      fluentd
     fluent-plugin-gcs (0.4.0)
       fluentd (>= 0.14.22, < 2)
       google-cloud-storage (~> 1.1)
@@ -112,6 +114,7 @@ PLATFORMS
 
 DEPENDENCIES
   fluent-plugin-elasticsearch
+  fluent-plugin-forest
   fluent-plugin-gcs
   fluent-plugin-insert-id
   fluent-plugin-kafka
