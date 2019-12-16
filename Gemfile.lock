@@ -1,5 +1,5 @@
 GEM
-  remote: https://api.rubygems.org/
+  remote: https://rubygems.org/
   specs:
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
@@ -17,7 +17,7 @@ GEM
     elasticsearch-transport (7.3.0)
       faraday
       multi_json
-    excon (0.66.0)
+    excon (0.71.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     fluent-plugin-elasticsearch (3.5.5)
