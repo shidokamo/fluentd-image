@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM gcr.io/google-containers/debian-base-amd64:v1.0.0
+FROM gcr.io/google-containers/debian-base-amd64:v2.0.0
 
 COPY Gemfile* /
 
@@ -24,7 +24,6 @@ RUN BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev" \
     && clean-install $BUILD_DEPS \
                      libsystemd-dev \
                      ca-certificates \
-                     libjemalloc1 \
                      liblz4-1 \
                      ruby \
     && echo 'gem: --no-document' >> /etc/gemrc \

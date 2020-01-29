@@ -21,19 +21,19 @@ REPO=gcr.io
 PROJECT:= $(shell gcloud config get-value project)
 PREFIX := ${REPO}/${PROJECT}
 IMAGE := fluentd
-TAG = v1.7.0c
+TAG = v2.0.0
 BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 
 default:update-dependencies push
 
 build:
-	docker build --pull -t $(PREFIX)/${IMAGE}:$(TAG) .
+	docker build --network=host --pull -t $(PREFIX)/${IMAGE}:$(TAG) .
 
 push:
 	gcloud docker -- push $(PREFIX)/${IMAGE}:$(TAG)
 
 update-dependencies:build
-	docker run -it --name ${IMAGE}-refreeze $(PREFIX)/${IMAGE}:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
+	docker run -it --network=host --name ${IMAGE}-refreeze $(PREFIX)/${IMAGE}:$(TAG) /bin/sh -c 'clean-install "$(BUILD_DEPS)" && rm /Gemfile.lock && gem install --file Gemfile'
 	docker cp ${IMAGE}-refreeze:/Gemfile.lock .
 	docker rm ${IMAGE}-refreeze
 
