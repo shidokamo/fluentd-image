@@ -8,4 +8,4 @@ gem 'fluent-plugin-gcs'
 gem 'fluent-plugin-kafka'
 gem 'fluent-plugin-elasticsearch'
 gem 'fluent-plugin-forest'
-
+gem 'fluent-plugin-gcloud-pubsub-custom'

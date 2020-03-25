@@ -21,7 +21,7 @@ REPO=gcr.io
 PROJECT:= $(shell gcloud config get-value project)
 PREFIX := ${REPO}/${PROJECT}
 IMAGE := fluentd
-TAG = v2.0.0
+TAG = v3.0.0
 BUILD_DEPS="make gcc g++ libc6-dev ruby-dev libffi-dev"
 
 default:update-dependencies push
