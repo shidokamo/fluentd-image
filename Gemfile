@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'fluentd', '~> 1.7.0'
+gem 'fluentd', '~> 1.14.2'
 gem 'fluent-plugin-multi-format-parser'
 gem 'oj'
 gem 'fluent-plugin-insert-id'
